@@ -1,0 +1,212 @@
+[
+    {
+        "id": 1,
+        "date": "2019-01-01",
+        "temperatureC": 0,
+        "TemperatureF": 32,
+        "Summary": "Freezing"
+    },
+    {
+        "id": 2,
+        "date": "2019-01-14",
+        "temperatureC": 25,
+        "TemperatureF": 77,
+        "Summary": "Hot"
+    },
+    {
+        "id": 3,
+        "date": "2019-01-28",
+        "temperatureC": -15,
+        "TemperatureF": 5,
+        "Summary": "Bracing"
+    },
+    {
+        "id": 4,
+        "date": "2019-02-01",
+        "temperatureC": -5,
+        "TemperatureF": 23,
+        "Summary": "Chilly"
+    },
+    {
+        "id": 5,
+        "date": "2019-02-14",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    },
+    {
+        "id": 6,
+        "date": "2019-02-28",
+        "temperatureC": -10,
+        "TemperatureF": 14,
+        "Summary": "Cool"
+    },
+    {
+        "id": 7,
+        "date": "2019-03-01",
+        "temperatureC": 10,
+        "TemperatureF": 50,
+        "Summary": "Warm"
+    },
+    {   
+        "id": 8,
+        "date": "2019-03-14",
+        "temperatureC": 30,
+        "TemperatureF": 86,
+        "Summary": "Hot"
+    },
+    {
+        "id": 9,
+        "date": "2019-03-28",
+        "temperatureC": 5,
+        "TemperatureF": 41,
+        "Summary": "Cool"
+    },
+    {
+        "id": 10,
+        "date": "2019-04-01",
+        "temperatureC": 15,
+        "TemperatureF": 59,
+        "Summary": "Cool"
+    },
+    {
+        "id": 11,
+        "date": "2019-04-14",
+        "temperatureC": 25,
+        "TemperatureF": 77,
+        "Summary": "Hot"
+    },
+    {
+        "id": 12,
+        "date": "2019-04-28",
+        "temperatureC": 10,
+        "TemperatureF": 50,
+        "Summary": "Warm"
+    },
+    {
+        "id": 13,
+        "date": "2019-05-01",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    },
+    {
+        "id": 14,
+        "date": "2019-05-14",
+        "temperatureC": 30,
+        "TemperatureF": 86,
+        "Summary": "Hot"
+    },
+    {
+        "id": 15,
+        "date": "2019-05-28",
+        "temperatureC": 15,
+        "TemperatureF": 59,
+        "Summary": "Cool"
+    },
+    {
+        "id": 16,
+        "date": "2019-06-01",
+        "temperatureC": 25,
+        "TemperatureF": 77,
+        "Summary": "Hot"
+    },
+    {
+        "id": 17,
+        "date": "2019-06-14",
+        "temperatureC": 35,
+        "TemperatureF": 95,
+        "Summary": "Hot"
+    },
+    {
+        "id": 18,
+        "date": "2019-06-28",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    },
+    {
+        "id": 19,
+        "date": "2019-07-01",
+        "temperatureC": 30,
+        "TemperatureF": 86,
+        "Summary": "Scorching"
+    },
+    {
+        "id": 20,
+        "date": "2019-05-01",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    },
+    {
+        "id": 21,
+        "date": "2019-05-14",
+        "temperatureC": 30,
+        "TemperatureF": 86,
+        "Summary": "Hot"
+    },
+    {
+        "id": 22,
+        "date": "2019-05-28",
+        "temperatureC": 15,
+        "TemperatureF": 59,
+        "Summary": "Cool"
+    },
+    {
+        "id": 23,
+        "date": "2019-06-01",
+        "temperatureC": 25,
+        "TemperatureF": 77,
+        "Summary": "Hot"
+    },
+    {
+        "id": 24,
+        "date": "2019-06-14",
+        "temperatureC": 35,
+        "TemperatureF": 95,
+        "Summary": "Hot"
+    },
+    {
+        "id": 25,
+        "date": "2019-06-28",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    },
+    {   
+        "id": 26,
+        "date": "2019-07-01",
+        "temperatureC": 30,
+        "TemperatureF": 86,
+        "Summary": "Scorching"
+    },
+    {
+        "id": 27,
+        "date": "2019-05-28",
+        "temperatureC": 15,
+        "TemperatureF": 36,
+        "Summary": "Cool"
+    },
+    {   
+        "id": 28,
+        "date": "2019-06-01",
+        "temperatureC": 25,
+        "TemperatureF": 77,
+        "Summary": "Hot"
+    },
+    {
+        "id": 29,
+        "date": "2019-06-14",
+        "temperatureC": 35,
+        "TemperatureF": 95,
+        "Summary": "Hot"
+    },
+    {
+        "id": 30,
+        "date": "2019-06-28",
+        "temperatureC": 20,
+        "TemperatureF": 68,
+        "Summary": "Mild"
+    }
+]

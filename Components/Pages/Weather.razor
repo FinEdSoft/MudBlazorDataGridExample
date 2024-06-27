@@ -1,0 +1,92 @@
+﻿@page "/weather"
+@rendermode InteractiveServer
+
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<PageTitle>Weather</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Weather forecast</MudText>
+<MudText Class="mb-8">This component demonstrates fetching data from the server.</MudText>
+
+@if (forecasts == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudDataGrid T="WeatherForecast" ServerData="@_loadWeatherData" @ref="_weatherForecastDataGrid"  DragDropColumnReordering="true" 
+    ColumnsPanelReordering="true" Hideable="true" Filterable="true" Groupable="true" FilterMode="DataGridFilterMode.Simple" ShowMenuIcon="true">
+        <ToolBarContent>
+            <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <Columns>
+            <PropertyColumn Property="x => x.Id" Title="Id" />
+            <PropertyColumn Property="x => x.Date" Title="Date" />
+            <PropertyColumn Property="x => x.TemperatureC" Title="TemperatureC" />
+            <PropertyColumn Property="x => x.TemperatureF" Title="TemperatureF" />
+            <PropertyColumn Property="x => x.Summary" Title="Summary"  />
+        </Columns>
+        <PagerContent>
+            <MudDataGridPager T="WeatherForecast"/>
+        </PagerContent>
+    </MudDataGrid>
+}
+
+@code {
+    private List<WeatherForecast> forecasts;
+    private readonly HttpClient httpClient = new HttpClient();
+    private string searchTerm = "";
+    public MudDataGrid<WeatherForecast> _weatherForecastDataGrid = null;
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await httpClient.GetFromJsonAsync<List<WeatherForecast>>("http://localhost:5027/weatherData.json") ?? new List<WeatherForecast>();
+    }
+
+    private string? _searchString
+    {
+        get => searchTerm;
+        set
+        {
+            searchTerm = value;
+            _weatherForecastDataGrid.ReloadServerData();
+        }
+    }
+
+    private async Task<GridData<WeatherForecast>> _loadWeatherData(GridState<WeatherForecast> gridState)
+    {
+        var filterFunctions = gridState.FilterDefinitions.Select(x => x.GenerateFilterFunction());
+        var filteredData = forecasts.Where(x =>  filterFunctions.All(f => f(x))
+             && (string.IsNullOrWhiteSpace(_searchString) || System.Text.Json.JsonSerializer.Serialize(x).Contains(_searchString.Trim(), StringComparison.OrdinalIgnoreCase)));
+
+        var sortColumn = gridState.SortDefinitions.Count > 0 ? gridState.SortDefinitions.First().SortBy : null;
+        bool? sortDirectionDescending = gridState.SortDefinitions.Count > 0 ? gridState.SortDefinitions.First().Descending : null;
+        Console.WriteLine($"Sorting by {sortColumn} {(sortDirectionDescending.HasValue ? (sortDirectionDescending.Value ? "descending" : "ascending") : "not sorted")}");
+
+        var filterColumn = gridState.FilterDefinitions.Count > 0 ? gridState.FilterDefinitions.First().Column.PropertyName : null;
+        var Operator = gridState.FilterDefinitions.Count > 0 ? gridState.FilterDefinitions.First().Operator.ToString() : null;
+        var filterValue = gridState.FilterDefinitions.Count > 0 ? gridState.FilterDefinitions.First().Value : null;
+        Console.WriteLine($"Filtering by {filterColumn} {Operator} {filterValue}");
+
+        GridData<WeatherForecast> data = new()
+        {
+            Items = filteredData.OrderBySortDefinitions(gridState.SortDefinitions).Skip(gridState.Page * gridState.PageSize).Take(gridState.PageSize).ToList(),
+            TotalItems = filteredData.Count()
+        };
+
+        await Task.Delay(500);
+
+        return data;
+    }    
+
+    public class WeatherForecast
+    {
+        public int Id { get; set; }
+        public string Date { get; set; }
+        public int TemperatureC { get; set; }
+        public string? Summary { get; set; }
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}
